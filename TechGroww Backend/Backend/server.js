@@ -1,8 +1,8 @@
 import express from 'express'
-import apiroutes from '../Routes/apiroutes.js'
-import connectDB from '../config/db.js';
-import contactRoute from '../Routes/contactRoute.js'
-import authRoutes from '../Routes/authRoutes.js'
+import apiroutes from './Routes/apiroutes.js'
+import connectDB from './config/db.js';
+import contactRoute from './Routes/contactRoute.js'
+import authRoutes from './Routes/authRoutes.js'
 import cors from 'cors'
 import dotenv from 'dotenv';
 
