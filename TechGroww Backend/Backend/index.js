@@ -1,8 +1,8 @@
 import express from 'express'
-import apiroutes from './Routes/apiroutes.js'
+import apiroutes from './routes/apiroutes.js'
 import connectDB from './config/db.js';
-import contactRoute from './Routes/contactRoute.js'
-import authRoutes from './Routes/authRoutes.js'
+import contactRoute from './routes/contactRoute.js'
+import authRoutes from './routes/authRoutes.js'
 import cors from 'cors'
 import dotenv from 'dotenv';
 
@@ -24,6 +24,4 @@ app.get('/', (req, res) => {
     res.send("Hello from server")
 })
 
-app.listen(PORT, ()=>{
-    console.log("Server started on port 3000");
-})
+export default app;
