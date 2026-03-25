@@ -1,14 +1,27 @@
 import mongoose from "mongoose";
 
 const connectDB = async () => {
-    try{
-        await mongoose.connect("mongodb://127.0.0.1:27017/techgroww")
+  try {
+    // 👇 SABSE PEHLE YE PRINT KAR
+    console.log("MONGO_URI:", process.env.MONGO_URI);
 
-        console.log("Mongo connected")
-    } catch(error){
-        console.error("Database connection error: ", error)
-        process.exit(1)
-    }
-}
+    await mongoose.connect(process.env.MONGO_URI, {
+      serverSelectionTimeoutMS: 5000,
+    });
 
-export default connectDB
+    console.log("✅ Mongo connected");
+
+    mongoose.connection.on("connected", () => {
+      console.log("🟢 DB connection event triggered");
+    });
+
+    mongoose.connection.on("error", (err) => {
+      console.log("🔴 MongoDB error:", err);
+    });
+
+  } catch (error) {
+    console.error("❌ Database connection error:", error.message);
+  }
+};
+
+export default connectDB;
