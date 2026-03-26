@@ -4,6 +4,15 @@ import sendEmail from "../utils/sendEmail.js"
 
 const router = express.Router()
 
+router.get("/contacts", async (req, res) => {
+  try {
+    const contacts = await Contact.find();
+    res.json(contacts);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch contacts" });
+  }
+});
+
 router.post("/contact", async (req, res) => {
   try {
     //Save in Database
